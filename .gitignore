@@ -1,0 +1,33 @@
+# Environment files and secrets
+.env
+.env.local
+.env.*
+!.env.example
+!*.env.example
+backend/.env
+agent/.env
+frontend/.env.local
+frontend/.env
+
+# Python compilation & cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+venv/
+myenv/
+*.log
+agent.log
+
+# Node & Next.js build outputs
+node_modules/
+.next/
+out/
+.vercel/
+
+# Executables & PyInstaller build outputs
+dist/
+build/
+*.exe
+*.spec

@@ -1,0 +1,58 @@
+name: Build Pulse OS Agent (Windows .exe)
+
+# Trigger workflow on pushes to main/master branches or via manual workflow dispatch
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build-windows-agent:
+    name: Build Windows Executable
+    runs-on: windows-latest
+
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python 3.11 environment
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      # Step 3: Install required dependencies and PyInstaller
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r agent/requirements.txt
+          pip install pyinstaller
+
+      # Step 4: Build standalone executable using PyInstaller in agent/ directory
+      - name: Build PulseOS-Agent.exe with PyInstaller
+        working-directory: ./agent
+        run: |
+          pyinstaller --onefile --noconsole --name "PulseOS-Agent" --clean main.py
+
+      # Step 5: Prepare sample .env file inside dist/ output folder
+      - name: Prepare distribution environment template
+        working-directory: ./agent
+        run: |
+          echo BACKEND_URL=http://localhost:8000 > dist\.env
+          echo POLL_INTERVAL=5 >> dist\.env
+          echo # MACHINE_NAME=My Windows Laptop >> dist\.env
+          echo # MACHINE_KEY= >> dist\.env
+
+      # Step 6: Upload PulseOS-Agent.exe & .env as GitHub Actions build artifact
+      - name: Upload Windows Executable Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PulseOS-Agent-Windows
+          path: |
+            agent/dist/PulseOS-Agent.exe
+            agent/dist/.env
+          retention-days: 90

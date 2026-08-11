@@ -1,0 +1,1118 @@
+{
+  "nodes": [
+    {
+      "id": "agent_collector",
+      "label": "collector.py",
+      "file_type": "code",
+      "source_file": "agent/collector.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_collector_get_main_drive_path",
+      "label": "get_main_drive_path()",
+      "file_type": "code",
+      "source_file": "agent/collector.py",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_collector_get_machine_info",
+      "label": "get_machine_info()",
+      "file_type": "code",
+      "source_file": "agent/collector.py",
+      "source_location": "L21",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_collector_collect_metrics",
+      "label": "collect_metrics()",
+      "file_type": "code",
+      "source_file": "agent/collector.py",
+      "source_location": "L31",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_collector_py_any",
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_collector_rationale_1",
+      "label": "Pulse OS Agent - System Metrics Collector Harvester module for CPU, RAM, Disk,…",
+      "file_type": "rationale",
+      "source_file": "agent/collector.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_collector_rationale_14",
+      "label": "Return the root path of the primary operating system drive.",
+      "file_type": "rationale",
+      "source_file": "agent/collector.py",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_collector_rationale_22",
+      "label": "Return basic platform identity details.",
+      "file_type": "rationale",
+      "source_file": "agent/collector.py",
+      "source_location": "L22",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_collector_rationale_32",
+      "label": "Collect current system resource usage and top active processes. Args:…",
+      "file_type": "rationale",
+      "source_file": "agent/collector.py",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_main",
+      "label": "main.py",
+      "file_type": "code",
+      "source_file": "agent/main.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_main_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "agent/main.py",
+      "source_location": "L24",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_main_rationale_1",
+      "label": "Pulse OS Agent - Main Monitoring Daemon Entry point daemon process for…",
+      "file_type": "rationale",
+      "source_file": "agent/main.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_sender",
+      "label": "sender.py",
+      "file_type": "code",
+      "source_file": "agent/sender.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_sender_send_metrics",
+      "label": "send_metrics()",
+      "file_type": "code",
+      "source_file": "agent/sender.py",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_sender_py_any",
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_sender_rationale_1",
+      "label": "Pulse OS Agent - Telemetry Transport Sender Transmits system telemetry payloads…",
+      "file_type": "rationale",
+      "source_file": "agent/sender.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "agent_sender_rationale_15",
+      "label": "Send metrics telemetry payload to the backend server with automatic retries.…",
+      "file_type": "rationale",
+      "source_file": "agent/sender.py",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main",
+      "label": "main.py",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_get_db_client",
+      "label": "get_db_client()",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L45",
+      "_origin": "ast"
+    },
+    {
+      "id": "client",
+      "label": "Client",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_machineregisterrequest",
+      "label": "MachineRegisterRequest",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L58",
+      "_origin": "ast"
+    },
+    {
+      "id": "basemodel",
+      "label": "BaseModel",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_metricitemprocess",
+      "label": "MetricItemProcess",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L64",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_metricingestrequest",
+      "label": "MetricIngestRequest",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L71",
+      "_origin": "ast"
+    },
+    {
+      "id": "get",
+      "label": "get",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_health_check",
+      "label": "health_check()",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L86",
+      "_origin": "ast"
+    },
+    {
+      "id": "post",
+      "label": "post",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_register_machine",
+      "label": "register_machine()",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L97",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_ingest_metrics",
+      "label": "ingest_metrics()",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L146",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_list_machines",
+      "label": "list_machines()",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L207",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_get_machine_metrics",
+      "label": "get_machine_metrics()",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L219",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_rationale_1",
+      "label": "Pulse OS Backend Server FastAPI web service bridging agent telemetry with…",
+      "file_type": "rationale",
+      "source_file": "backend/main.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_rationale_46",
+      "label": "Dependency helper ensuring active Supabase database client connection.",
+      "file_type": "rationale",
+      "source_file": "backend/main.py",
+      "source_location": "L46",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_rationale_87",
+      "label": "Simple health check endpoint for uptime monitors.",
+      "file_type": "rationale",
+      "source_file": "backend/main.py",
+      "source_location": "L87",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_rationale_98",
+      "label": "Register a new machine node or update an existing machine by machine_key.…",
+      "file_type": "rationale",
+      "source_file": "backend/main.py",
+      "source_location": "L98",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_rationale_147",
+      "label": "Receive system telemetry from host monitoring agent. Updates machine heartbeat…",
+      "file_type": "rationale",
+      "source_file": "backend/main.py",
+      "source_location": "L147",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_rationale_208",
+      "label": "Return list of registered machines with id, name, hostname, is_online, and…",
+      "file_type": "rationale",
+      "source_file": "backend/main.py",
+      "source_location": "L208",
+      "_origin": "ast"
+    },
+    {
+      "id": "backend_main_rationale_220",
+      "label": "Return latest metrics for specified machine (ordered by created_at desc,…",
+      "file_type": "rationale",
+      "source_file": "backend/main.py",
+      "source_location": "L220",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "agent_collector",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector",
+      "target": "platform",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector",
+      "target": "psutil",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector",
+      "target": "agent_collector_get_main_drive_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector",
+      "target": "agent_collector_get_machine_info",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector",
+      "target": "agent_collector_collect_metrics",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector_collect_metrics",
+      "target": "agent_collector_py_any",
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector_collect_metrics",
+      "target": "agent_collector_get_main_drive_path",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector_rationale_1",
+      "target": "agent_collector",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector_rationale_14",
+      "target": "agent_collector_get_main_drive_path",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector_rationale_22",
+      "target": "agent_collector_get_machine_info",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_collector_rationale_32",
+      "target": "agent_collector_collect_metrics",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/collector.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "logging",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "dotenv",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "collector",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "sender",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "agent_main_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main_rationale_1",
+      "target": "agent_main",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_sender",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/sender.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_sender",
+      "target": "logging",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/sender.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_sender",
+      "target": "requests",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/sender.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_sender",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/sender.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_sender",
+      "target": "agent_sender_send_metrics",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/sender.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_sender_send_metrics",
+      "target": "agent_sender_py_any",
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/sender.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_sender_rationale_1",
+      "target": "agent_sender",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/sender.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_sender_rationale_15",
+      "target": "agent_sender_send_metrics",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/sender.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "logging",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "datetime",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "typing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "fastapi",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "dotenv",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "supabase",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "backend_main_get_db_client",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_get_db_client",
+      "target": "client",
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "backend_main_machineregisterrequest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_machineregisterrequest",
+      "target": "basemodel",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "backend_main_metricitemprocess",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_metricitemprocess",
+      "target": "basemodel",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "backend_main_metricingestrequest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_metricingestrequest",
+      "target": "basemodel",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_health_check",
+      "target": "get",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "backend_main_health_check",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_register_machine",
+      "target": "post",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "backend_main_register_machine",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_register_machine",
+      "target": "backend_main_machineregisterrequest",
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_ingest_metrics",
+      "target": "post",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L145",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "backend_main_ingest_metrics",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L146",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_ingest_metrics",
+      "target": "backend_main_metricingestrequest",
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L146",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_list_machines",
+      "target": "get",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L206",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "backend_main_list_machines",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L207",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_get_machine_metrics",
+      "target": "get",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L218",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "backend_main_get_machine_metrics",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L219",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main",
+      "target": "uvicorn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L235",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_register_machine",
+      "target": "backend_main_get_db_client",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_ingest_metrics",
+      "target": "backend_main_get_db_client",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_list_machines",
+      "target": "backend_main_get_db_client",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L209",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_get_machine_metrics",
+      "target": "backend_main_get_db_client",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L221",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_rationale_1",
+      "target": "backend_main",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_rationale_46",
+      "target": "backend_main_get_db_client",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_rationale_87",
+      "target": "backend_main_health_check",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_rationale_98",
+      "target": "backend_main_register_machine",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_rationale_147",
+      "target": "backend_main_ingest_metrics",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L147",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_rationale_208",
+      "target": "backend_main_list_machines",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L208",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "backend_main_rationale_220",
+      "target": "backend_main_get_machine_metrics",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L220",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "agent_collector_get_machine_info",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "agent_collector_collect_metrics",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main",
+      "target": "agent_sender_send_metrics",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main_main",
+      "target": "agent_collector_get_machine_info",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main_main",
+      "target": "agent_collector_collect_metrics",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "agent_main_main",
+      "target": "agent_sender_send_metrics",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "agent/main.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast"
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

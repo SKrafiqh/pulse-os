@@ -1,0 +1,37 @@
+{
+  "files": {
+    "code": [
+      "/Users/shaikrafiqhuddin/Desktop/PulseOs/agent/collector.py",
+      "/Users/shaikrafiqhuddin/Desktop/PulseOs/agent/main.py",
+      "/Users/shaikrafiqhuddin/Desktop/PulseOs/agent/sender.py",
+      "/Users/shaikrafiqhuddin/Desktop/PulseOs/backend/main.py"
+    ],
+    "document": [
+      "/Users/shaikrafiqhuddin/Desktop/PulseOs/README.md",
+      "/Users/shaikrafiqhuddin/Desktop/PulseOs/agent/requirements.txt",
+      "/Users/shaikrafiqhuddin/Desktop/PulseOs/backend/requirements.txt"
+    ],
+    "paper": [],
+    "image": [],
+    "video": []
+  },
+  "total_files": 7,
+  "total_words": 2050,
+  "needs_graph": false,
+  "warning": "Corpus is ~2,050 words - fits in a single context window. You may not need a graph.",
+  "skipped_sensitive": [],
+  "unclassified": [
+    "/Users/shaikrafiqhuddin/Desktop/PulseOs/agent/.env.example",
+    "/Users/shaikrafiqhuddin/Desktop/PulseOs/backend/.env.example",
+    "/Users/shaikrafiqhuddin/Desktop/PulseOs/frontend/.gitkeep"
+  ],
+  "walk_errors": [],
+  "ignored": [],
+  "pruned_noise_dirs": [
+    "/Users/shaikrafiqhuddin/Desktop/PulseOs/agent/__pycache__/",
+    "/Users/shaikrafiqhuddin/Desktop/PulseOs/backend/__pycache__/",
+    "/Users/shaikrafiqhuddin/Desktop/PulseOs/graphify-out/"
+  ],
+  "graphifyignore_patterns": 0,
+  "scan_root": "/Users/shaikrafiqhuddin/Desktop/PulseOs"
+}
