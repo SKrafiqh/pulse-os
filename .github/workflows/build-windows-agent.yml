@@ -38,14 +38,17 @@ jobs:
         run: |
           pyinstaller --onefile --noconsole --name "PulseOS-Agent" --clean main.py
 
-      # Step 5: Prepare sample .env file inside dist/ output folder
+      # Step 5: Prepare sample .env file inside dist/ output folder using PowerShell here-string
       - name: Prepare distribution environment template
         working-directory: ./agent
+        shell: powershell
         run: |
-          echo BACKEND_URL=http://localhost:8000 > dist\.env
-          echo POLL_INTERVAL=5 >> dist\.env
-          echo # MACHINE_NAME=My Windows Laptop >> dist\.env
-          echo # MACHINE_KEY= >> dist\.env
+          @"
+          BACKEND_URL=http://localhost:8000
+          POLL_INTERVAL=5
+          # MACHINE_NAME=My Windows Laptop
+          # MACHINE_KEY=
+          "@ | Out-File -FilePath dist\.env -Encoding utf8
 
       # Step 6: Upload PulseOS-Agent.exe & .env as GitHub Actions build artifact
       - name: Upload Windows Executable Artifact
