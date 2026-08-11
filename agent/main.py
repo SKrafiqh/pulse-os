@@ -140,7 +140,7 @@ def main() -> None:
     try:
         while True:
             logger.info("Harvesting system metrics...")
-            metrics: Dict[str, Any] = collect_metrics(top_process_count=15)
+            metrics: Dict[str, Any] = collect_metrics(top_process_count=20)
 
             logger.info(
                 "Telemetry: CPU %.1f%% | RAM %.1f%% (%.2f/%.2f GB) | Disk %.1f%% | Top Processes: %d",
