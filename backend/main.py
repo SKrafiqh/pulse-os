@@ -1,13 +1,14 @@
 """
 Pulse OS Backend Server
 FastAPI web service bridging agent telemetry with Supabase Postgres database.
-Includes OpenRouter AI telemetry diagnostics endpoint and machine node deletion.
+Includes OpenRouter AI telemetry diagnostics endpoint, machine deletion, and background offline status tracking.
 """
 
 import os
 import sys
 import json
 import logging
+import asyncio
 import requests
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
@@ -36,7 +37,7 @@ load_dotenv(override=True)
 app: FastAPI = FastAPI(
     title="Pulse OS Backend API",
     description="Telemetry ingestion and machine monitoring API service backed by Supabase & OpenRouter AI",
-    version="1.3.0"
+    version="1.4.0"
 )
 
 # -----------------------------------------------------------------------------
@@ -86,6 +87,37 @@ def get_db_client() -> Client:
             detail="Database client is not initialized or configured."
         )
     return supabase
+
+
+# -----------------------------------------------------------------------------
+# Background Task: Automatic Offline Node Detection
+# -----------------------------------------------------------------------------
+async def check_offline_machines_loop():
+    """Background task sweeping machines table every 15s to mark inactive nodes offline (>45s)."""
+    while True:
+        try:
+            await asyncio.sleep(15)
+            if supabase:
+                res = supabase.table("machines").select("id, last_seen, is_online").eq("is_online", True).execute()
+                if res.data:
+                    now_dt = datetime.now(timezone.utc)
+                    for m in res.data:
+                        last_seen_str = m.get("last_seen")
+                        if last_seen_str:
+                            try:
+                                last_seen_dt = datetime.fromisoformat(last_seen_str.replace("Z", "+00:00"))
+                                if (now_dt - last_seen_dt).total_seconds() > 45.0:
+                                    supabase.table("machines").update({"is_online": False}).eq("id", m["id"]).execute()
+                                    logger.info("Marked machine ID %s offline due to inactivity (>45s).", m["id"])
+                            except Exception:
+                                pass
+        except Exception as err:
+            logger.warning("Error in background offline checker loop: %s", err)
+
+
+@app.on_event("startup")
+async def on_startup():
+    asyncio.create_task(check_offline_machines_loop())
 
 
 # -----------------------------------------------------------------------------
@@ -172,7 +204,7 @@ def register_machine(payload: MachineRegisterRequest) -> Dict[str, Any]:
                 "is_online": True
             }).eq("id", machine_id).execute()
 
-            logger.info("Updated existing machine record ID %s", machine_id)
+            logger.info("Updated existing machine record ID %s (online)", machine_id)
             return {"status": "updated", "machine": updated.data[0] if updated.data else existing.data[0]}
         else:
             inserted = db.table("machines").insert({
@@ -186,7 +218,7 @@ def register_machine(payload: MachineRegisterRequest) -> Dict[str, Any]:
             if not inserted.data:
                 raise HTTPException(status_code=500, detail="Failed to insert machine record.")
 
-            logger.info("Registered new machine record ID %s", inserted.data[0]["id"])
+            logger.info("Registered new machine record ID %s (online)", inserted.data[0]["id"])
             return {"status": "registered", "machine": inserted.data[0]}
 
     except HTTPException:
@@ -203,7 +235,7 @@ def register_machine(payload: MachineRegisterRequest) -> Dict[str, Any]:
 def ingest_metrics(payload: MetricIngestRequest) -> Dict[str, Any]:
     """
     Receive system telemetry from host monitoring agent.
-    Updates machine heartbeat and inserts new telemetry metric row.
+    Updates machine heartbeat (last_seen=now, is_online=True) and inserts new telemetry metric row.
     """
     db: Client = get_db_client()
     now_iso: str = datetime.now(timezone.utc).isoformat()
@@ -259,11 +291,27 @@ def ingest_metrics(payload: MetricIngestRequest) -> Dict[str, Any]:
 
 @app.get("/api/v1/machines", status_code=status.HTTP_200_OK)
 def list_machines() -> Dict[str, Any]:
-    """Return list of registered machines with id, name, hostname, is_online, and last_seen."""
+    """Return list of registered machines with dynamically evaluated online status."""
     db: Client = get_db_client()
     try:
-        res = db.table("machines").select("id, name, hostname, is_online, last_seen").order("created_at", desc=True).execute()
-        return {"machines": res.data if res.data else []}
+        res = db.table("machines").select("id, name, hostname, is_online, last_seen, machine_key").order("created_at", desc=True).execute()
+        machines = res.data if res.data else []
+        now_dt = datetime.now(timezone.utc)
+
+        for m in machines:
+            last_seen_str = m.get("last_seen")
+            if last_seen_str:
+                try:
+                    last_seen_dt = datetime.fromisoformat(last_seen_str.replace("Z", "+00:00"))
+                    diff_seconds = (now_dt - last_seen_dt).total_seconds()
+                    if diff_seconds > 45.0:
+                        m["is_online"] = False
+                    else:
+                        m["is_online"] = True
+                except Exception:
+                    pass
+
+        return {"machines": machines}
     except Exception as exc:
         logger.error("Error listing machines: %s", exc)
         raise HTTPException(status_code=500, detail=f"Database query error: {str(exc)}")

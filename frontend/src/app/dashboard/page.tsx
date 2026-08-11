@@ -28,6 +28,7 @@ export default function DashboardPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | "online" | "offline">("all");
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [now, setNow] = useState(Date.now());
 
   // Deletion modal state
   const [deletingMachine, setDeletingMachine] = useState<{ id: string; name: string } | null>(null);
@@ -41,6 +42,14 @@ export default function DashboardPage() {
     }
   }, [user, authLoading, router]);
 
+  // Periodic ticker to recalculate 45s online/offline window
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setNow(Date.now());
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   // Toast message auto-dismiss
   useEffect(() => {
     if (toastMessage) {
@@ -50,6 +59,16 @@ export default function DashboardPage() {
       return () => clearTimeout(timer);
     }
   }, [toastMessage]);
+
+  // Helper to evaluate 45-second last_seen online threshold
+  const isMachineOnline = useCallback(
+    (m: Machine): boolean => {
+      if (!m.last_seen) return m.is_online;
+      const diffSeconds = (now - new Date(m.last_seen).getTime()) / 1000;
+      return diffSeconds <= 45;
+    },
+    [now]
+  );
 
   // Fetch initial machines and latest metrics in parallel
   const fetchMachinesAndMetrics = useCallback(async () => {
@@ -178,7 +197,6 @@ export default function DashboardPage() {
       });
 
       if (!res.ok) {
-        // Fallback to direct Supabase deletion
         const { error: sbErr } = await supabase
           .from("machines")
           .delete()
@@ -212,16 +230,18 @@ export default function DashboardPage() {
         machine.hostname.toLowerCase().includes(term) ||
         machine.machine_key.toLowerCase().includes(term);
 
-      if (statusFilter === "online") return matchesSearch && machine.is_online;
-      if (statusFilter === "offline") return matchesSearch && !machine.is_online;
+      const online = isMachineOnline(machine);
+
+      if (statusFilter === "online") return matchesSearch && online;
+      if (statusFilter === "offline") return matchesSearch && !online;
       return matchesSearch;
     });
-  }, [machines, searchTerm, statusFilter]);
+  }, [machines, searchTerm, statusFilter, isMachineOnline]);
 
   const totalNodes = useMemo(() => machines.length, [machines]);
   const onlineNodes = useMemo(
-    () => machines.filter((m) => m.is_online).length,
-    [machines]
+    () => machines.filter((m) => isMachineOnline(m)).length,
+    [machines, isMachineOnline]
   );
 
   const { avgCpu, avgRam } = useMemo(() => {
