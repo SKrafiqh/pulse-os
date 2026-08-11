@@ -1,7 +1,7 @@
 """
 Pulse OS Agent - System Metrics Collector
 Harvester module for CPU, RAM, Disk, and Process telemetry using psutil.
-Supports cross-platform environments (Windows, macOS, Linux).
+Supports process name mapping, process grouping, and cross-platform environments.
 """
 
 import os
@@ -116,15 +116,17 @@ def get_machine_info() -> Dict[str, str]:
     }
 
 
-def collect_metrics(top_process_count: int = 8) -> Dict[str, Any]:
+def collect_metrics(top_process_count: int = 15) -> Dict[str, Any]:
     """
     Collect current system resource usage and top active processes.
+    Groups multiple process instances with the same normalized name,
+    sums CPU & RAM load, and returns the top N grouped entries (default 15).
 
     Args:
-        top_process_count (int): Number of top memory-consuming processes to include.
+        top_process_count (int): Number of top grouped processes to return.
 
     Returns:
-        Dict[str, Any]: Clean metrics dictionary with normalized process names.
+        Dict[str, Any]: Clean metrics dictionary.
     """
     # CPU usage percentage
     cpu_percent: float = psutil.cpu_percent(interval=1.0)
@@ -144,26 +146,60 @@ def collect_metrics(top_process_count: int = 8) -> Dict[str, Any]:
         disk = psutil.disk_usage("/")
         disk_percent: float = disk.percent
 
-    # Top processes sorted by memory percentage
-    processes: List[Dict[str, Any]] = []
-    for proc in sorted(
-        psutil.process_iter(['pid', 'name', 'cpu_percent', 'memory_percent']),
-        key=lambda p: (p.info.get('memory_percent') or 0.0),
-        reverse=True
-    )[:top_process_count]:
+    # Aggregate processes by clean normalized name
+    grouped: Dict[str, Dict[str, Any]] = {}
+
+    for proc in psutil.process_iter(['pid', 'name', 'cpu_percent', 'memory_percent']):
         try:
-            info: Dict[str, Any] = proc.info
+            info = proc.info
+            pid = int(info['pid'])
             raw_name = str(info['name'] or "Unknown")
             clean_name = normalize_process_name(raw_name)
 
-            processes.append({
-                "pid": int(info['pid']),
-                "name": clean_name,
-                "cpu_percent": round(float(info.get('cpu_percent') or 0.0), 2),
-                "memory_percent": round(float(info.get('memory_percent') or 0.0), 2)
-            })
+            cpu_val = float(info.get('cpu_percent') or 0.0)
+            ram_val = float(info.get('memory_percent') or 0.0)
+
+            if clean_name in grouped:
+                grouped[clean_name]["count"] += 1
+                grouped[clean_name]["cpu_sum"] += cpu_val
+                grouped[clean_name]["memory_sum"] += ram_val
+                if pid < grouped[clean_name]["pid"]:
+                    grouped[clean_name]["pid"] = pid
+            else:
+                grouped[clean_name] = {
+                    "pid": pid,
+                    "base_name": clean_name,
+                    "count": 1,
+                    "cpu_sum": cpu_val,
+                    "memory_sum": ram_val
+                }
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
             continue
+
+    # Format entries with process counts (e.g. "Google Chrome (4 processes)")
+    formatted_processes: List[Dict[str, Any]] = []
+    for item in grouped.values():
+        count = item["count"]
+        display_name = f"{item['base_name']} ({count} processes)" if count > 1 else item["base_name"]
+        cpu_total = round(item["cpu_sum"], 2)
+        mem_total = round(item["memory_sum"], 2)
+
+        formatted_processes.append({
+            "pid": item["pid"],
+            "name": display_name,
+            "cpu_percent": cpu_total,
+            "memory_percent": mem_total,
+            "_total_load": cpu_total + mem_total
+        })
+
+    # Sort descending by combined CPU + Memory load (highest resource consumers first)
+    formatted_processes.sort(key=lambda p: p["_total_load"], reverse=True)
+
+    # Clean up transient load key and return top 15
+    final_processes: List[Dict[str, Any]] = []
+    for proc_data in formatted_processes[:top_process_count]:
+        proc_data.pop("_total_load", None)
+        final_processes.append(proc_data)
 
     return {
         "cpu_percent": round(float(cpu_percent), 2),
@@ -171,5 +207,5 @@ def collect_metrics(top_process_count: int = 8) -> Dict[str, Any]:
         "ram_used_gb": round(float(ram_used_gb), 2),
         "ram_total_gb": round(float(ram_total_gb), 2),
         "disk_percent": round(float(disk_percent), 2),
-        "processes": processes
+        "processes": final_processes
     }
